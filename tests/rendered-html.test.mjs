@@ -32,6 +32,12 @@ test("server-renders the active wedding invitation", async () => {
 test("keeps personalisation in one configuration file", async () => {
   const config = await readFile(new URL("../app/wedding.config.ts", import.meta.url), "utf8");
   assert.match(config, /PERSONALISE YOUR INVITATION HERE/);
+  assert.match(config, /PAGE-BY-PAGE CONTENT/);
+  assert.match(config, /PAGE 1 — CLOSED ENVELOPE/);
+  assert.match(config, /PAGE 7 — CONTACT CARD/);
+  assert.match(config, /const pageContent/);
+  assert.match(config, /frontEnvelope:/);
+  assert.match(config, /public\/music\/wedding-song\.mp3/);
   assert.match(config, /whatsappNumber/);
   assert.match(config, /mapEmbedUrl/);
   assert.match(config, /events:/);

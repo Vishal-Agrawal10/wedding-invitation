@@ -23,8 +23,128 @@
 export type WeddingTemplate = "aamantran" | "royal";
 const activeTemplate: WeddingTemplate = "aamantran";
 
+/* ==================================================================
+   PAGE-BY-PAGE CONTENT — EDIT THESE BLOCKS
+   ================================================================== */
+const pageContent = {
+  // PAGE 1 — CLOSED ENVELOPE
+  page1: {
+    blessingLine: "With Love & Blessings",
+    familyLine: "The Bride's Family & The Groom's Family",
+    openButtonLabel: "Click to open",
+  },
+
+  // PAGE 2 — COUPLE LANDING PAGE
+  page2: {
+    brideName: "Urvashi",
+    groomName: "Apoorv",
+    monogramText: "U · A",
+    welcomeText: "We are honoured to welcome you to the wedding ceremony of",
+    hashtag: "#ApUrvi",
+    scrollLabel: "Scroll",
+  },
+
+  // PAGE 3 — DATE, INVITATION MESSAGE AND COUNTDOWN
+  page3: {
+    heading: "Our Forever Begins",
+    // ISO format is required for the live countdown.
+    date: "2026-11-23T10:00:00+05:30",
+    displayDate: "23 November 2026",
+    shortDate: "23.11.26",
+    city: "Bilaspur, Chhattisgarh",
+    blessing: "By the grace of the divine and with the blessings of our elders",
+    invitationMessage:
+      "With immense joy in our hearts, we invite you to join us as two families become one.",
+    countdownHeading: "Until we say “I do”",
+  },
+
+  // PAGE 4 — BRIDE AND GROOM FAMILY DETAILS
+  page4: {
+    heading: "A Promise for a Lifetime",
+    brideGrandparents: "Granddaughter of the Bride's grandparents",
+    brideParents: "Daughter of the Bride's parents",
+    groomGrandparents: "Grandson of the Groom's grandparents",
+    groomParents: "Son of the Groom's parents",
+  },
+
+  // PAGE 5 — WEDDING EVENTS
+  page5: {
+    eyebrow: "Wedding itinerary",
+    heading: "Join us in celebration",
+    events: [
+      {
+        name: "Haldi",
+        date: "Monday, 23 November",
+        time: "10:00 PM onwards",
+        venue: "Hari Amrit",
+        note: "An afternoon of henna, heirlooms and joyful colour.",
+        dressCode: "Festive florals & jewel tones",
+        symbol: "✦",
+        mapUrl: "https://www.google.com/maps/search/?api=1&query=Garden+Courtyard+Udaipur",
+      },
+      {
+        name: "Sangeet Soirée",
+        date: "Tuesday, 23 November",
+        time: "7:30 PM onwards",
+        venue: "The Palace Terrace",
+        note: "Music under the stars, followed by dinner and dancing.",
+        dressCode: "Indian glam",
+        symbol: "♪",
+        mapUrl: "https://www.google.com/maps/search/?api=1&query=Palace+Terrace+Udaipur",
+      },
+      {
+        name: "Wedding Ceremony",
+        date: "Wednesday, 24 November",
+        time: "4:00 PM onwards",
+        venue: "The Lake Pavilion",
+        note: "Baraat, varmala and sacred pheras by the water.",
+        dressCode: "Royal Indian formal",
+        symbol: "❋",
+        mapUrl: "https://www.google.com/maps/search/?api=1&query=Lake+Pavilion+Udaipur",
+      },
+      {
+        name: "Royal Reception",
+        date: "Wednesday, 24 November",
+        time: "8:30 PM onwards",
+        venue: "The Grand Durbar Hall",
+        note: "A candlelit dinner celebrating our new beginning.",
+        dressCode: "Evening elegance",
+        symbol: "◇",
+        mapUrl: "https://www.google.com/maps/search/?api=1&query=Grand+Durbar+Hall+Udaipur",
+      },
+    ],
+  },
+
+  // PAGE 6 — WEDDING LOCATION AND GOOGLE MAP
+  page6: {
+    eyebrow: "Destination",
+    heading: "Wedding Location",
+    venueName: "Your Palace Venue",
+    address: "Udaipur, Rajasthan, India",
+    mapButtonLabel: "Open in Google Maps",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=City+Palace+Udaipur",
+    mapEmbedUrl: "https://www.google.com/maps?q=City%20Palace%20Udaipur&z=14&output=embed",
+  },
+
+  // PAGE 7 — CONTACT CARD AND FINAL MESSAGE
+  page7: {
+    loveLinePrefix: "With Love",
+    heading: "RSVP / CONTACT",
+    hostName: "The Wedding Family",
+    deadline: "",
+    contacts: [
+      { name: "Bride's family", phone: "+91 99999 99999" },
+      { name: "Groom's family", phone: "+91 88888 88888" },
+    ],
+    footerMessage: "Made with love for our forever",
+  },
+} as const;
+
 export const weddingConfig = {
   activeTemplate,
+
+  // The active invitation reads its wording from these page blocks.
+  pages: pageContent,
 
   branding: {
     omLogo: "branding/om-logo-transparent.png",
@@ -57,48 +177,44 @@ export const weddingConfig = {
   },
 
   couple: {
-    bride: "Urvashi",
-    groom: "Apoorv",
-    monogram: "U · A",
+    bride: pageContent.page2.brideName,
+    groom: pageContent.page2.groomName,
+    monogram: pageContent.page2.monogramText,
   },
+
+  // Compatibility link used by the inactive royal template.
+  frontEnvelope: pageContent.page1,
 
   welcome: {
     kicker: "A wedding invitation",
     invitationLine: "You are cordially invited to celebrate",
-    buttonLabel: "Click to open",
     soundNote: "Best experienced with sound",
-    // Text shown on the front of the closed envelope.
-    coverBlessingLine: "With Love & Blessings",
-    coverFamilyLine: "The Bride's Family & The Groom's Family",
   },
 
   invitation: {
     eyebrow: "Together with their families",
-    heroGreeting: "We are honoured to welcome you to the wedding ceremony of",
-    greeting:
-      "With immense joy in our hearts, we invite you to join us as two families become one.",
+    heroGreeting: pageContent.page2.welcomeText,
+    greeting: pageContent.page3.invitationMessage,
     closing: "Your presence will make our celebration complete.",
-    hashtag: "#ApUrvi",
+    hashtag: pageContent.page2.hashtag,
   },
 
   wedding: {
-    // ISO format is required for the live countdown.
-    date: "2026-11-23T10:00:00+05:30",
-    displayDate: "23 November 2026",
-    shortDate: "23.11.26",
-    city: "Bilaspur, Chhattisgarh",
+    date: pageContent.page3.date,
+    displayDate: pageContent.page3.displayDate,
+    shortDate: pageContent.page3.shortDate,
+    city: pageContent.page3.city,
   },
 
   families: {
     bride: "The Bride's Family",
     groom: "The Groom's Family",
-    blessing:
-      "By the grace of the divine and with the blessings of our elders",
+    blessing: pageContent.page3.blessing,
     sacredMark: "॥ शुभ विवाह ॥",
-    groomGrandparents: "Grandson of the Groom's grandparents",
-    groomParents: "Son of the Groom's parents",
-    brideGrandparents: "Granddaughter of the Bride's grandparents",
-    brideParents: "Daughter of the Bride's parents",
+    groomGrandparents: pageContent.page4.groomGrandparents,
+    groomParents: pageContent.page4.groomParents,
+    brideGrandparents: pageContent.page4.brideGrandparents,
+    brideParents: pageContent.page4.brideParents,
   },
 
   story: {
@@ -110,59 +226,18 @@ export const weddingConfig = {
   },
 
   sectionHeadings: {
-    countdown: "Until we say “I do”",
-    eventsEyebrow: "Wedding itinerary",
-    eventsTitle: "Join us in celebration",
+    countdown: pageContent.page3.countdownHeading,
+    eventsEyebrow: pageContent.page5.eyebrow,
+    eventsTitle: pageContent.page5.heading,
     galleryEyebrow: "A glimpse of us",
     galleryTitle: "Moments we treasure",
-    venueEyebrow: "Destination",
+    venueEyebrow: pageContent.page6.eyebrow,
     venueTitle: "A palace affair",
     rsvpEyebrow: "Répondez s'il vous plaît",
     rsvpTitle: "Will you be joining us?",
   },
 
-  events: [
-    {
-      name: "Haldi",
-      date: "Monday, 23 November",
-      time: "10:00 PM onwards",
-      venue: "Hari Amrit",
-      note: "An afternoon of henna, heirlooms and joyful colour.",
-      dressCode: "Festive florals & jewel tones",
-      symbol: "✦",
-      mapUrl: "https://www.google.com/maps/search/?api=1&query=Garden+Courtyard+Udaipur",
-    },
-    {
-      name: "Sangeet Soirée",
-      date: "Tuesday, 23 November",
-      time: "7:30 PM onwards",
-      venue: "The Palace Terrace",
-      note: "Music under the stars, followed by dinner and dancing.",
-      dressCode: "Indian glam",
-      symbol: "♪",
-      mapUrl: "https://www.google.com/maps/search/?api=1&query=Palace+Terrace+Udaipur",
-    },
-    {
-      name: "Wedding Ceremony",
-      date: "Wednesday, 24 November",
-      time: "4:00 PM onwards",
-      venue: "The Lake Pavilion",
-      note: "Baraat, varmala and sacred pheras by the water.",
-      dressCode: "Royal Indian formal",
-      symbol: "❋",
-      mapUrl: "https://www.google.com/maps/search/?api=1&query=Lake+Pavilion+Udaipur",
-    },
-    {
-      name: "Royal Reception",
-      date: "Wednesday, 24 November",
-      time: "8:30 PM onwards",
-      venue: "The Grand Durbar Hall",
-      note: "A candlelit dinner celebrating our new beginning.",
-      dressCode: "Evening elegance",
-      symbol: "◇",
-      mapUrl: "https://www.google.com/maps/search/?api=1&query=Grand+Durbar+Hall+Udaipur",
-    },
-  ],
+  events: pageContent.page5.events,
 
   photos: {
     hero: "royal-wedding-hero.png",
@@ -202,23 +277,21 @@ export const weddingConfig = {
   },
 
   venue: {
-    sectionTitle: "Wedding Location",
-    name: "Your Palace Venue",
-    address: "Udaipur, Rajasthan, India",
-    mapButtonLabel: "Open in Google Maps",
-    mapUrl:
-      "https://www.google.com/maps/search/?api=1&query=City+Palace+Udaipur",
-    mapEmbedUrl:
-      "https://www.google.com/maps?q=City%20Palace%20Udaipur&z=14&output=embed",
+    sectionTitle: pageContent.page6.heading,
+    name: pageContent.page6.venueName,
+    address: pageContent.page6.address,
+    mapButtonLabel: pageContent.page6.mapButtonLabel,
+    mapUrl: pageContent.page6.mapUrl,
+    mapEmbedUrl: pageContent.page6.mapEmbedUrl,
     travelNote:
       "A detailed travel and stay guide will be shared with our guests closer to the celebration.",
   },
 
   rsvp: {
-    deadline: "",
+    deadline: pageContent.page7.deadline,
     // Include the country code without + or spaces, e.g. 919876543210.
     whatsappNumber: "919999999999",
-    hostName: "The Wedding Family",
+    hostName: pageContent.page7.hostName,
     nameLabel: "Your name",
     namePlaceholder: "Full name",
     attendanceLabel: "Will you attend?",
@@ -231,13 +304,12 @@ export const weddingConfig = {
     noteLabel: "A note for the couple",
     notePlaceholder: "Blessings, dietary notes or travel details",
     buttonLabel: "",
-    contacts: [
-      { name: "Bride's family", phone: "+91 99999 99999" },
-      { name: "Groom's family", phone: "+91 88888 88888" },
-    ],
+    contacts: pageContent.page7.contacts,
   },
 
   music: {
+    // Put your MP3 at: public/music/wedding-song.mp3
+    // Then change the next line to: src: "music/wedding-song.mp3",
     src: "",
     label: "Wedding ambience",
     volume: 0.42,
@@ -245,7 +317,7 @@ export const weddingConfig = {
   },
 
   footer: {
-    message: "Made with love for our forever",
+    message: pageContent.page7.footerMessage,
   },
 } as const;
 

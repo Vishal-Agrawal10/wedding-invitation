@@ -30,11 +30,11 @@ function Countdown() {
 
   useEffect(() => {
     const firstTick = window.setTimeout(
-      () => setTimeLeft(calculateTimeLeft(config.wedding.date)),
+      () => setTimeLeft(calculateTimeLeft(config.pages.page3.date)),
       0,
     );
     const timer = window.setInterval(
-      () => setTimeLeft(calculateTimeLeft(config.wedding.date)),
+      () => setTimeLeft(calculateTimeLeft(config.pages.page3.date)),
       1_000,
     );
     return () => {
@@ -72,6 +72,10 @@ function Reveal({ children, className = "", delay = 0 }: { children: ReactNode; 
 function OrnateFrame({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
     <div className={`film-ornate-frame ${className}`}>
+      <span className="film-vine film-vine--top" aria-hidden="true"><i /><i /><b /><i /><i /></span>
+      <span className="film-vine film-vine--right" aria-hidden="true"><i /><i /><b /><i /><i /></span>
+      <span className="film-vine film-vine--bottom" aria-hidden="true"><i /><i /><b /><i /><i /></span>
+      <span className="film-vine film-vine--left" aria-hidden="true"><i /><i /><b /><i /><i /></span>
       {children}
     </div>
   );
@@ -223,34 +227,36 @@ export function AamantranWeddingInvitation() {
             transition={{ duration: 0.25 }}
           >
             <div className="film-cover__canvas">
-              <motion.div
-                className="film-cover__sacred"
-                animate={phase === "opening" ? { opacity: 0, y: -70 } : { opacity: 1, y: 0 }}
-                transition={{ duration: 0.55 }}
-              >
-                <img src={config.branding.omLogo} alt={config.families.sacredMark} />
-              </motion.div>
+              <div className="film-cover__envelope">
+                <motion.div
+                  className="film-cover__sacred"
+                  animate={phase === "opening" ? { opacity: 0, y: -70 } : { opacity: 1, y: 0 }}
+                  transition={{ duration: 0.55 }}
+                >
+                  <img src={config.branding.omLogo} alt={config.families.sacredMark} />
+                </motion.div>
 
-              <motion.div className="film-flap film-flap--left" animate={phase === "opening" ? { x: "-104%", opacity: 0 } : { x: 0, opacity: 1 }} transition={{ duration: 0.82, delay: 0.34 }} />
-              <motion.div className="film-flap film-flap--right" animate={phase === "opening" ? { x: "104%", opacity: 0 } : { x: 0, opacity: 1 }} transition={{ duration: 0.82, delay: 0.34 }} />
-              <motion.div className="film-flap film-flap--bottom" animate={phase === "opening" ? { y: "105%", opacity: 0 } : { y: 0, opacity: 1 }} transition={{ duration: 0.82, delay: 0.38 }} />
-              <motion.div className="film-flap film-flap--lid" animate={phase === "opening" ? { y: "-106%", rotateX: 76, opacity: 0 } : { y: 0, rotateX: 0, opacity: 1 }} transition={{ duration: 0.9, delay: 0.18, ease: [0.22, 1, 0.36, 1] }} />
+                <motion.div className="film-flap film-flap--left" animate={phase === "opening" ? { x: "-104%", opacity: 0 } : { x: 0, opacity: 1 }} transition={{ duration: 0.82, delay: 0.34 }} />
+                <motion.div className="film-flap film-flap--right" animate={phase === "opening" ? { x: "104%", opacity: 0 } : { x: 0, opacity: 1 }} transition={{ duration: 0.82, delay: 0.34 }} />
+                <motion.div className="film-flap film-flap--bottom" animate={phase === "opening" ? { y: "105%", opacity: 0 } : { y: 0, opacity: 1 }} transition={{ duration: 0.82, delay: 0.38 }} />
+                <motion.div className="film-flap film-flap--lid" animate={phase === "opening" ? { y: "-106%", rotateX: 76, opacity: 0 } : { y: 0, rotateX: 0, opacity: 1 }} transition={{ duration: 0.9, delay: 0.18, ease: [0.22, 1, 0.36, 1] }} />
 
-              <motion.button
-                className="film-seal"
-                type="button"
-                onClick={openInvitation}
-                aria-label={config.welcome.buttonLabel}
-                animate={phase === "opening" ? { scale: 0, rotate: 32, opacity: 0 } : { scale: 1, rotate: 0, opacity: 1 }}
-                transition={{ duration: 0.5 }}
-              >
-                <img src={config.branding.waxStamp} alt="Open the wedding invitation" />
-                <span>{config.welcome.buttonLabel}</span>
-              </motion.button>
-              <motion.div className="film-cover__families" animate={phase === "opening" ? { opacity: 0 } : { opacity: 1 }}>
-                <span>{config.welcome.coverBlessingLine}</span>
-                <strong>{config.welcome.coverFamilyLine}</strong>
-              </motion.div>
+                <motion.button
+                  className="film-seal"
+                  type="button"
+                  onClick={openInvitation}
+                  aria-label={config.pages.page1.openButtonLabel}
+                  animate={phase === "opening" ? { scale: 0, rotate: 32, opacity: 0 } : { scale: 1, rotate: 0, opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <img src={config.branding.waxStamp} alt="Open the wedding invitation" />
+                  <span>{config.pages.page1.openButtonLabel}</span>
+                </motion.button>
+                <motion.div className="film-cover__families" animate={phase === "opening" ? { opacity: 0 } : { opacity: 1 }}>
+                  <span>{config.pages.page1.blessingLine}</span>
+                  <strong>{config.pages.page1.familyLine}</strong>
+                </motion.div>
+              </div>
             </div>
           </motion.section>
         )}
@@ -268,10 +274,10 @@ export function AamantranWeddingInvitation() {
               transition={{ duration: 0.9, delay: 0.16 }}
             >
               <img className="film-hero__monogram" src={config.branding.initialsLogo} alt={`${config.couple.bride} and ${config.couple.groom} monogram`} />
-              <p>{config.invitation.heroGreeting}</p>
+              <p>{config.pages.page2.welcomeText}</p>
               <h1><span>{config.couple.bride}</span><i>&amp;</i><span>{config.couple.groom}</span></h1>
-              <b>{config.invitation.hashtag}</b>
-              <a href="#begins" aria-label="Scroll to the invitation">Scroll <ChevronDown size={15} /></a>
+              <b>{config.pages.page2.hashtag}</b>
+              <a href="#begins" aria-label="Scroll to the invitation">{config.pages.page2.scrollLabel} <ChevronDown size={15} /></a>
             </motion.div>
           </OrnateFrame>
         </section>
@@ -281,13 +287,13 @@ export function AamantranWeddingInvitation() {
             <img src={config.branding.handsIllustration} alt="Bride and groom holding hands" />
           </Reveal>
           <Reveal className="film-begins__copy">
-            <h2>Our Forever Begins</h2>
-            <strong>{config.wedding.shortDate}</strong>
-            <p>{config.families.blessing}</p>
-            <p>{config.invitation.greeting}</p>
+            <h2>{config.pages.page3.heading}</h2>
+            <strong>{config.pages.page3.shortDate}</strong>
+            <p>{config.pages.page3.blessing}</p>
+            <p>{config.pages.page3.invitationMessage}</p>
           </Reveal>
           <Reveal className="film-countdown-wrap">
-            <h3>{config.sectionHeadings.countdown}</h3>
+            <h3>{config.pages.page3.countdownHeading}</h3>
             <Countdown />
           </Reveal>
         </section>
@@ -295,25 +301,25 @@ export function AamantranWeddingInvitation() {
         <section className="film-promise">
           <OrnateFrame>
             <Reveal className="film-promise__content">
-              <p>A Promise for a Lifetime</p>
-              <span>{config.families.brideGrandparents}</span>
+              <p>{config.pages.page4.heading}</p>
+              <span>{config.pages.page4.brideGrandparents}</span>
               <h2>{config.couple.bride}</h2>
-              <span>{config.families.brideParents}</span>
+              <span>{config.pages.page4.brideParents}</span>
               <i>&amp;</i>
-              <span>{config.families.groomGrandparents}</span>
+              <span>{config.pages.page4.groomGrandparents}</span>
               <h2>{config.couple.groom}</h2>
-              <span>{config.families.groomParents}</span>
+              <span>{config.pages.page4.groomParents}</span>
             </Reveal>
           </OrnateFrame>
         </section>
 
         <section className="film-events film-paper" id="events">
           <Reveal className="film-script-heading">
-            <span>{config.sectionHeadings.eventsEyebrow}</span>
-            <h2>{config.sectionHeadings.eventsTitle}</h2>
+            <span>{config.pages.page5.eyebrow}</span>
+            <h2>{config.pages.page5.heading}</h2>
           </Reveal>
           <div className="film-timeline">
-            {config.events.map((event, index) => (
+            {config.pages.page5.events.map((event, index) => (
               <motion.article
                 key={event.name}
                 initial={{ opacity: 0, x: 24 }}
@@ -336,10 +342,10 @@ export function AamantranWeddingInvitation() {
         <section className="film-location" id="venue">
           <OrnateFrame>
             <Reveal className="film-location__heading">
-              <span>{config.sectionHeadings.venueEyebrow}</span>
-              <h2>{config.venue.sectionTitle}</h2>
-              <p>{config.venue.name}</p>
-              <small>{config.venue.address}</small>
+              <span>{config.pages.page6.eyebrow}</span>
+              <h2>{config.pages.page6.heading}</h2>
+              <p>{config.pages.page6.venueName}</p>
+              <small>{config.pages.page6.address}</small>
             </Reveal>
             <motion.div
               className="film-map-frame"
@@ -348,10 +354,10 @@ export function AamantranWeddingInvitation() {
               viewport={{ once: true, margin: "-70px" }}
               transition={{ duration: 0.8 }}
             >
-              <iframe src={config.venue.mapEmbedUrl} title={`Map to ${config.venue.name}`} loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+              <iframe src={config.pages.page6.mapEmbedUrl} title={`Map to ${config.pages.page6.venueName}`} loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
             </motion.div>
-            <a className="film-location__button" href={config.venue.mapUrl} target="_blank" rel="noreferrer">
-              {config.venue.mapButtonLabel} <ExternalLink size={14} />
+            <a className="film-location__button" href={config.pages.page6.mapUrl} target="_blank" rel="noreferrer">
+              {config.pages.page6.mapButtonLabel} <ExternalLink size={14} />
             </a>
           </OrnateFrame>
         </section>
@@ -361,12 +367,12 @@ export function AamantranWeddingInvitation() {
             <div className="film-rsvp__back" />
             <div className="film-rsvp__liner" />
             <Reveal className="film-rsvp__card">
-              <span>With Love, {config.rsvp.hostName}</span>
-              <h2>RSVP / CONTACT</h2>
-              {config.rsvp.contacts.map((contact) => (
+              <span>{config.pages.page7.loveLinePrefix}, {config.pages.page7.hostName}</span>
+              <h2>{config.pages.page7.heading}</h2>
+              {config.pages.page7.contacts.map((contact) => (
                 <p key={contact.name}><b>{contact.name}</b><a href={`tel:${contact.phone.replace(/\s/g, "")}`}>{contact.phone}</a></p>
               ))}
-              <small>{config.rsvp.deadline}</small>
+              <small>{config.pages.page7.deadline}</small>
             </Reveal>
             <div className="film-rsvp__front film-rsvp__front--left" />
             <div className="film-rsvp__front film-rsvp__front--right" />
@@ -377,7 +383,7 @@ export function AamantranWeddingInvitation() {
 
         <footer className="film-footer">
           <img src={config.branding.omLogo} alt={config.families.sacredMark} />
-          <p>{config.footer.message}</p>
+          <p>{config.pages.page7.footerMessage}</p>
           <b>{config.couple.bride} &amp; {config.couple.groom}</b>
         </footer>
       </div>

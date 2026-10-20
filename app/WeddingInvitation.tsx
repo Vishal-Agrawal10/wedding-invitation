@@ -210,7 +210,7 @@ export function WeddingInvitation() {
               <p className="welcome-for">{config.welcome.invitationLine}</p>
               <h1>{config.couple.bride}<span>&</span>{config.couple.groom}</h1>
               <p className="welcome-date">{config.wedding.displayDate} · {config.wedding.city}</p>
-              <button className="open-invitation" onClick={() => setEntered(true)}><span>{config.welcome.buttonLabel}</span><Heart size={15} fill="currentColor" /></button>
+              <button className="open-invitation" onClick={() => setEntered(true)}><span>{config.frontEnvelope.openButtonLabel}</span><Heart size={15} fill="currentColor" /></button>
               <p className="welcome-note">{config.welcome.soundNote}</p>
             </motion.div>
           </motion.section>
