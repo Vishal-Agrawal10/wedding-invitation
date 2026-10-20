@@ -27,8 +27,8 @@ export const weddingConfig = {
   activeTemplate,
 
   branding: {
-    omLogo: "branding/om-logo.png",
-    initialsLogo: "branding/initials-logo-rose.png",
+    omLogo: "branding/om-logo-transparent.png",
+    initialsLogo: "branding/initials-logo-transparent.png",
     waxStamp: "branding/wax-seal-cutout.png",
     handsIllustration: "branding/hands-reference.jpg",
   },
@@ -67,6 +67,9 @@ export const weddingConfig = {
     invitationLine: "You are cordially invited to celebrate",
     buttonLabel: "Click to open",
     soundNote: "Best experienced with sound",
+    // Text shown on the front of the closed envelope.
+    coverBlessingLine: "With Love & Blessings",
+    coverFamilyLine: "The Bride's Family & The Groom's Family",
   },
 
   invitation: {

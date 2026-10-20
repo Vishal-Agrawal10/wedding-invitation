@@ -72,10 +72,6 @@ function Reveal({ children, className = "", delay = 0 }: { children: ReactNode; 
 function OrnateFrame({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
     <div className={`film-ornate-frame ${className}`}>
-      <span className="film-vine film-vine--top" aria-hidden="true"><i /><i /><b /><i /><i /></span>
-      <span className="film-vine film-vine--right" aria-hidden="true"><i /><i /><b /><i /><i /></span>
-      <span className="film-vine film-vine--bottom" aria-hidden="true"><i /><i /><b /><i /><i /></span>
-      <span className="film-vine film-vine--left" aria-hidden="true"><i /><i /><b /><i /><i /></span>
       {children}
     </div>
   );
@@ -152,12 +148,29 @@ export function AamantranWeddingInvitation() {
     setMusicOn(true);
   };
 
+  const scrollInvitationToTop = () => {
+    const root = document.documentElement;
+    const previousBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = "auto";
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    root.scrollTop = 0;
+    document.body.scrollTop = 0;
+    window.requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+      root.style.scrollBehavior = previousBehavior;
+    });
+  };
+
   const openInvitation = () => {
     if (phase !== "sealed") return;
+    scrollInvitationToTop();
     setPhase("opening");
     if (config.presentation.playMusicWhenOpened && !musicOn) toggleMusic();
     openingTimerRef.current = window.setTimeout(
-      () => setPhase("open"),
+      () => {
+        scrollInvitationToTop();
+        setPhase("open");
+      },
       prefersReducedMotion ? 150 : config.presentation.entryAnimationDurationMs,
     );
   };
@@ -166,6 +179,15 @@ export function AamantranWeddingInvitation() {
     document.body.classList.toggle("invitation-locked", phase !== "open");
     return () => document.body.classList.remove("invitation-locked");
   }, [phase]);
+
+  useEffect(() => {
+    const previousRestoration = window.history.scrollRestoration;
+    window.history.scrollRestoration = "manual";
+    scrollInvitationToTop();
+    return () => {
+      window.history.scrollRestoration = previousRestoration;
+    };
+  }, []);
 
   useEffect(
     () => () => {
@@ -226,8 +248,8 @@ export function AamantranWeddingInvitation() {
                 <span>{config.welcome.buttonLabel}</span>
               </motion.button>
               <motion.div className="film-cover__families" animate={phase === "opening" ? { opacity: 0 } : { opacity: 1 }}>
-                <span>With Love &amp; Blessings</span>
-                <strong>{config.families.bride} &amp; {config.families.groom}</strong>
+                <span>{config.welcome.coverBlessingLine}</span>
+                <strong>{config.welcome.coverFamilyLine}</strong>
               </motion.div>
             </div>
           </motion.section>
