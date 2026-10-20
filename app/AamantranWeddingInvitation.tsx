@@ -4,14 +4,13 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
   ChevronDown,
   ExternalLink,
-  MessageCircleHeart,
   Music2,
   Pause,
   Play,
   Volume2,
   VolumeX,
 } from "lucide-react";
-import { CSSProperties, ReactNode, useEffect, useMemo, useRef, useState } from "react";
+import { CSSProperties, ReactNode, useEffect, useRef, useState } from "react";
 import { weddingConfig as config } from "./wedding.config";
 
 type EntryPhase = "sealed" | "opening" | "open";
@@ -73,13 +72,11 @@ function Reveal({ children, className = "", delay = 0 }: { children: ReactNode; 
 function OrnateFrame({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
     <div className={`film-ornate-frame ${className}`}>
-      <span className="film-ornate-frame__top" aria-hidden="true">❀　❧　✿　❧　❀</span>
-      <span className="film-ornate-corner film-ornate-corner--tl" aria-hidden="true">❀</span>
-      <span className="film-ornate-corner film-ornate-corner--tr" aria-hidden="true">❀</span>
-      <span className="film-ornate-corner film-ornate-corner--bl" aria-hidden="true">❀</span>
-      <span className="film-ornate-corner film-ornate-corner--br" aria-hidden="true">❀</span>
+      <span className="film-vine film-vine--top" aria-hidden="true"><i /><i /><b /><i /><i /></span>
+      <span className="film-vine film-vine--right" aria-hidden="true"><i /><i /><b /><i /><i /></span>
+      <span className="film-vine film-vine--bottom" aria-hidden="true"><i /><i /><b /><i /><i /></span>
+      <span className="film-vine film-vine--left" aria-hidden="true"><i /><i /><b /><i /><i /></span>
       {children}
-      <span className="film-ornate-frame__bottom" aria-hidden="true">❀　❧　✿　❧　❀</span>
     </div>
   );
 }
@@ -179,11 +176,6 @@ export function AamantranWeddingInvitation() {
     [],
   );
 
-  const whatsappUrl = useMemo(() => {
-    const message = `Hello ${config.rsvp.hostName}! I am responding to the wedding invitation for ${config.couple.bride} and ${config.couple.groom}.`;
-    return `https://wa.me/${config.rsvp.whatsappNumber}?text=${encodeURIComponent(message)}`;
-  }, []);
-
   const heroVersions = {
     photo: (
       <motion.img
@@ -191,7 +183,7 @@ export function AamantranWeddingInvitation() {
         src={config.photos.hero}
         alt={`${config.couple.bride} and ${config.couple.groom}`}
         initial={prefersReducedMotion ? false : { scale: 1.08 }}
-        animate={phase === "open" ? { scale: 1 } : { scale: 1.08 }}
+        animate={phase !== "sealed" ? { scale: 1 } : { scale: 1.08 }}
         transition={{ duration: 2.1, ease: "easeOut" }}
       />
     ),
@@ -217,15 +209,10 @@ export function AamantranWeddingInvitation() {
                 <img src={config.branding.omLogo} alt={config.families.sacredMark} />
               </motion.div>
 
-              <motion.div
-                className="film-cover__paper-reveal"
-                initial={{ scale: 0.72, opacity: 0 }}
-                animate={phase === "opening" ? { scale: 1.08, opacity: 1 } : { scale: 0.72, opacity: 0 }}
-                transition={{ duration: 0.95, delay: 0.38, ease: [0.22, 1, 0.36, 1] }}
-              />
-              <motion.div className="film-flap film-flap--left" animate={phase === "opening" ? { x: "-104%", opacity: 0 } : { x: 0, opacity: 1 }} transition={{ duration: 0.9, delay: 0.25 }} />
-              <motion.div className="film-flap film-flap--right" animate={phase === "opening" ? { x: "104%", opacity: 0 } : { x: 0, opacity: 1 }} transition={{ duration: 0.9, delay: 0.25 }} />
-              <motion.div className="film-flap film-flap--bottom" animate={phase === "opening" ? { y: "105%", opacity: 0 } : { y: 0, opacity: 1 }} transition={{ duration: 0.85, delay: 0.3 }} />
+              <motion.div className="film-flap film-flap--left" animate={phase === "opening" ? { x: "-104%", opacity: 0 } : { x: 0, opacity: 1 }} transition={{ duration: 0.82, delay: 0.34 }} />
+              <motion.div className="film-flap film-flap--right" animate={phase === "opening" ? { x: "104%", opacity: 0 } : { x: 0, opacity: 1 }} transition={{ duration: 0.82, delay: 0.34 }} />
+              <motion.div className="film-flap film-flap--bottom" animate={phase === "opening" ? { y: "105%", opacity: 0 } : { y: 0, opacity: 1 }} transition={{ duration: 0.82, delay: 0.38 }} />
+              <motion.div className="film-flap film-flap--lid" animate={phase === "opening" ? { y: "-106%", rotateX: 76, opacity: 0 } : { y: 0, rotateX: 0, opacity: 1 }} transition={{ duration: 0.9, delay: 0.18, ease: [0.22, 1, 0.36, 1] }} />
 
               <motion.button
                 className="film-seal"
@@ -236,6 +223,7 @@ export function AamantranWeddingInvitation() {
                 transition={{ duration: 0.5 }}
               >
                 <img src={config.branding.waxStamp} alt="Open the wedding invitation" />
+                <span>{config.welcome.buttonLabel}</span>
               </motion.button>
               <motion.div className="film-cover__families" animate={phase === "opening" ? { opacity: 0 } : { opacity: 1 }}>
                 <span>With Love &amp; Blessings</span>
@@ -254,9 +242,10 @@ export function AamantranWeddingInvitation() {
             <motion.div
               className="film-hero__content"
               initial={{ opacity: 0, y: 24 }}
-              animate={phase === "open" ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-              transition={{ duration: 1, delay: 0.2 }}
+              animate={phase !== "sealed" ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+              transition={{ duration: 0.9, delay: 0.16 }}
             >
+              <img className="film-hero__monogram" src={config.branding.initialsLogo} alt={`${config.couple.bride} and ${config.couple.groom} monogram`} />
               <p>{config.invitation.heroGreeting}</p>
               <h1><span>{config.couple.bride}</span><i>&amp;</i><span>{config.couple.groom}</span></h1>
               <b>{config.invitation.hashtag}</b>
@@ -285,13 +274,13 @@ export function AamantranWeddingInvitation() {
           <OrnateFrame>
             <Reveal className="film-promise__content">
               <p>A Promise for a Lifetime</p>
-              <span>{config.families.groomGrandparents}</span>
-              <h2>{config.couple.groom}</h2>
-              <span>{config.families.groomParents}</span>
-              <i>&amp;</i>
               <span>{config.families.brideGrandparents}</span>
               <h2>{config.couple.bride}</h2>
               <span>{config.families.brideParents}</span>
+              <i>&amp;</i>
+              <span>{config.families.groomGrandparents}</span>
+              <h2>{config.couple.groom}</h2>
+              <span>{config.families.groomParents}</span>
             </Reveal>
           </OrnateFrame>
         </section>
@@ -348,6 +337,7 @@ export function AamantranWeddingInvitation() {
         <section className="film-rsvp film-paper" id="rsvp">
           <div className="film-rsvp__envelope">
             <div className="film-rsvp__back" />
+            <div className="film-rsvp__liner" />
             <Reveal className="film-rsvp__card">
               <span>With Love, {config.rsvp.hostName}</span>
               <h2>RSVP / CONTACT</h2>
@@ -355,12 +345,11 @@ export function AamantranWeddingInvitation() {
                 <p key={contact.name}><b>{contact.name}</b><a href={`tel:${contact.phone.replace(/\s/g, "")}`}>{contact.phone}</a></p>
               ))}
               <small>{config.rsvp.deadline}</small>
-              <a className="film-rsvp__whatsapp" href={whatsappUrl} target="_blank" rel="noreferrer"><MessageCircleHeart size={16} /> {config.rsvp.buttonLabel}</a>
             </Reveal>
             <div className="film-rsvp__front film-rsvp__front--left" />
             <div className="film-rsvp__front film-rsvp__front--right" />
             <div className="film-rsvp__front film-rsvp__front--bottom" />
-            <div className="film-rsvp__seal">❧</div>
+            <div className="film-rsvp__seal"><img src={config.branding.waxStamp} alt="Wax seal" /></div>
           </div>
         </section>
 

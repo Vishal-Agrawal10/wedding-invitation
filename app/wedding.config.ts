@@ -28,7 +28,8 @@ export const weddingConfig = {
 
   branding: {
     omLogo: "branding/om-logo.png",
-    waxStamp: "branding/wax-stamp.png",
+    initialsLogo: "branding/initials-logo-rose.png",
+    waxStamp: "branding/wax-seal-cutout.png",
     handsIllustration: "branding/hands-reference.jpg",
   },
 
@@ -64,7 +65,7 @@ export const weddingConfig = {
   welcome: {
     kicker: "A wedding invitation",
     invitationLine: "You are cordially invited to celebrate",
-    buttonLabel: "Open invitation",
+    buttonLabel: "Click to open",
     soundNote: "Best experienced with sound",
   },
 

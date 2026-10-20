@@ -24,8 +24,8 @@ test("server-renders the active wedding invitation", async () => {
   assert.match(html, /class="film-site"/);
   assert.match(html, /With Love &amp; Blessings/i);
   assert.match(html, /Wedding Location/i);
-  assert.match(html, /Open invitation/i);
-  assert.match(html, /WhatsApp/i);
+  assert.match(html, /Click to open/i);
+  assert.doesNotMatch(html, /film-rsvp__whatsapp/i);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/i);
 });
 
