@@ -1,5 +1,12 @@
+import { AamantranWeddingInvitation } from "./AamantranWeddingInvitation";
 import { WeddingInvitation } from "./WeddingInvitation";
+import { weddingConfig } from "./wedding.config";
 
 export default function Home() {
-  return <WeddingInvitation />;
+  const templates = {
+    aamantran: <AamantranWeddingInvitation />,
+    royal: <WeddingInvitation />,
+  };
+
+  return templates[weddingConfig.activeTemplate];
 }

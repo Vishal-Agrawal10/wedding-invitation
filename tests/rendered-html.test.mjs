@@ -14,14 +14,16 @@ async function render() {
   );
 }
 
-test("server-renders the royal wedding invitation", async () => {
+test("server-renders the active wedding invitation", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /Bride Name &amp; Groom Name/);
-  assert.match(html, /A royal wedding invitation/i);
+  assert.match(html, /Wedding Invitation/);
+  assert.match(html, /class="film-site"/);
+  assert.match(html, /With Love &amp; Blessings/i);
+  assert.match(html, /Wedding Location/i);
   assert.match(html, /Open invitation/i);
   assert.match(html, /WhatsApp/i);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/i);
@@ -34,4 +36,7 @@ test("keeps personalisation in one configuration file", async () => {
   assert.match(config, /mapEmbedUrl/);
   assert.match(config, /events:/);
   assert.match(config, /gallery:/);
+
+  const royalTemplate = await readFile(new URL("../app/WeddingInvitation.tsx", import.meta.url), "utf8");
+  assert.match(royalTemplate, /className="welcome-screen"/);
 });
