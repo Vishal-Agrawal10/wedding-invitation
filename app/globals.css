@@ -231,6 +231,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .film-footer > img { display: block; width: min(210px, 58vw); height: auto; margin: 0 auto -5px; }
 .film-footer p { margin: 12px 0 9px; color: rgba(255,247,234,.7); font-size: 13px; }
 .film-footer b { font: 400 28px var(--film-script); }
+.film-petal-shower { position: fixed; z-index: 90; inset: 0; overflow: hidden; pointer-events: none; contain: strict; }
+.film-petal { position: absolute; top: 0; display: block; height: auto; object-fit: contain; filter: drop-shadow(0 2px 2px rgba(72, 8, 25, .22)); transform-origin: 35% 75%; user-select: none; will-change: transform; }
 .film-music { position: fixed; z-index: 120; right: 15px; bottom: 15px; display: flex; align-items: center; gap: 5px; padding: 11px 13px; border: 1px solid rgba(255, 235, 220, .64); border-radius: 999px; background: rgba(105, 49, 62, .92); color: #ffeadd; box-shadow: 0 6px 22px rgba(47, 18, 24, .3); backdrop-filter: blur(8px); cursor: pointer; }
 
 @keyframes film-heartbeat {

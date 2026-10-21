@@ -125,6 +125,17 @@ export const weddingConfig = {
     playMusicWhenOpened: true,
   },
 
+  // OPTIONAL ANIMATED EFFECTS
+  effects: {
+    rosePetalShower: {
+      enabled: true,
+      images: [
+        "effects/rose-petal-broad.png",
+        "effects/rose-petal-folded.png",
+      ],
+    },
+  },
+
   // OPTIONAL COUPLE PHOTO — place the image inside public/photos.
   photos: {
     hero: "photos/couple.jpg",

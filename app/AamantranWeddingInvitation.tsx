@@ -15,6 +15,16 @@ import { weddingConfig as config } from "./wedding.config";
 
 type EntryPhase = "sealed" | "opening" | "open";
 
+const ROSE_PETALS = Array.from({ length: 16 }, (_, index) => ({
+  delay: -(index * 0.68),
+  drift: (index % 2 === 0 ? -1 : 1) * (18 + (index % 4) * 8),
+  duration: 8.4 + (index % 5) * 0.85,
+  left: (8 + index * 37) % 96,
+  opacity: 0.58 + (index % 4) * 0.1,
+  rotation: index * 29,
+  size: 24 + (index % 5) * 5,
+}));
+
 function calculateTimeLeft(target: string) {
   const difference = Math.max(0, new Date(target).getTime() - Date.now());
   return {
@@ -77,6 +87,43 @@ function OrnateFrame({ children, className = "" }: { children: ReactNode; classN
       <span className="film-vine film-vine--bottom" aria-hidden="true"><i /><i /><b /><i /><i /></span>
       <span className="film-vine film-vine--left" aria-hidden="true"><i /><i /><b /><i /><i /></span>
       {children}
+    </div>
+  );
+}
+
+function RosePetalShower() {
+  const prefersReducedMotion = useReducedMotion();
+  if (prefersReducedMotion) return null;
+
+  return (
+    <div className="film-petal-shower" aria-hidden="true">
+      {ROSE_PETALS.map((petal, index) => (
+        <motion.img
+          className="film-petal"
+          key={index}
+          src={config.effects.rosePetalShower.images[index % config.effects.rosePetalShower.images.length]}
+          alt=""
+          draggable={false}
+          style={{
+            left: `${petal.left}%`,
+            opacity: petal.opacity,
+            width: petal.size,
+          }}
+          initial={{ x: 0, y: "-14vh", rotate: petal.rotation, rotateX: 0 }}
+          animate={{
+            x: [0, petal.drift, petal.drift * 0.2, -petal.drift * 0.35],
+            y: ["-14vh", "28vh", "70vh", "114vh"],
+            rotate: [petal.rotation, petal.rotation + 120, petal.rotation + 245, petal.rotation + 390],
+            rotateX: [0, 160, 300, 470],
+          }}
+          transition={{
+            delay: petal.delay,
+            duration: petal.duration,
+            ease: "linear",
+            repeat: Infinity,
+          }}
+        />
+      ))}
     </div>
   );
 }
@@ -390,6 +437,8 @@ export function AamantranWeddingInvitation() {
           <b>{config.pages.page2.brideName} &amp; {config.pages.page2.groomName}</b>
         </footer>
       </div>
+
+      {phase !== "sealed" && config.effects.rosePetalShower.enabled && <RosePetalShower />}
 
       <button className="film-music" type="button" onClick={toggleMusic} aria-label={musicOn ? "Pause music" : "Play music"} title={config.music.label}>
         {musicOn ? <Volume2 size={16} /> : <VolumeX size={16} />}
