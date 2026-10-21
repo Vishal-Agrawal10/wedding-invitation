@@ -368,11 +368,13 @@ export function AamantranWeddingInvitation() {
             <div className="film-rsvp__back" />
             <div className="film-rsvp__liner" />
             <Reveal className="film-rsvp__card">
+              <img className="film-rsvp__monogram" src={config.branding.initialsLogo} alt={`${config.pages.page2.brideName} and ${config.pages.page2.groomName} monogram`} />
               <span>{config.pages.page7.loveLinePrefix}, {config.pages.page7.hostName}</span>
               <h2>{config.pages.page7.heading}</h2>
               {config.pages.page7.contacts.map((contact) => (
                 <p key={contact.name}><b>{contact.name}</b><a href={`tel:${contact.phone.replace(/\s/g, "")}`}>{contact.phone}</a></p>
               ))}
+              <div className="film-rsvp__free-text">{config.pages.page7.freeText}</div>
               <small>{config.pages.page7.deadline}</small>
             </Reveal>
             <div className="film-rsvp__front film-rsvp__front--left" />

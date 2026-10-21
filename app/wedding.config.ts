@@ -13,7 +13,7 @@ export const weddingConfig = {
     // PAGE 1 — CLOSED ENVELOPE
     page1: {
       blessingLine: "With Love & Blessings",
-      familyLine: "The Bride's Family & The Groom's Family",
+      familyLine: "Agrawal Family",
       openButtonLabel: "Click to open",
     },
 
@@ -57,25 +57,25 @@ export const weddingConfig = {
         {
           name: "Haldi",
           date: "Monday, 23 November",
-          time: "10:00 PM onwards",
+          time: "11:00 AM onwards",
           venue: "Hari Amrit, Bilaspur",
         },
         {
           name: "Sangeet and Engagement",
           date: "Monday, 23 November",
-          time: "7:30 PM onwards",
+          time: "7:00 PM onwards",
           venue: "Hari Amrit, Bilaspur",
         },
         {
           name: "Wedding Ceremony",
           date: "Tuesday, 24 November",
-          time: "2:00 PM onwards",
+          time: "3:30 PM onwards",
           venue: "Hari Amrit, Bilaspur",
         },
         {
           name: "Grand Reception",
           date: "Tuesday, 24 November",
-          time: "8:30 PM onwards",
+          time: "8:00 PM onwards",
           venue: "Hari Amrit, Bilaspur",
         },
       ],
@@ -96,7 +96,8 @@ export const weddingConfig = {
     page7: {
       loveLinePrefix: "With Love",
       heading: "CONTACT",
-      hostName: "The Wedding Family",
+      hostName: "The Agrawal Family",
+      freeText: "Bua meri Dulhan bani, khushiyon ki bahar chali. Mai nanhi Vamika kahu, shadi me jarur ana sabhi !!",
       deadline: "",
       contacts: [
         { name: "Sunita Agrawal", phone: "+91 9977154039" },

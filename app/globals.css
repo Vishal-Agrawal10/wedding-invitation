@@ -61,7 +61,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .film-cover { position: fixed; inset: 0; z-index: 2000; display: grid; place-items: center; overflow: hidden; background: #8d535f; }
 .film-cover__canvas { position: relative; width: 100vw; height: 100svh; min-width: 0; min-height: 590px; display: grid; place-items: center; overflow: hidden; perspective: 1100px; background: radial-gradient(circle at center, #a86673 0, #925763 100%); color: #fff7ea; }
 .film-cover__envelope { position: relative; width: min(94vw, 680px); height: min(88svh, 860px); overflow: hidden; border: 1px solid rgba(255,240,228,.18); border-radius: 10px; background: #ad6874; box-shadow: 0 24px 60px rgba(53,19,28,.28), inset 0 0 0 1px rgba(91,39,50,.13); transform: translateZ(0); }
-.film-cover.is-opening { background: var(--film-ivory) url("./textures/crumpled-paper.png") center top / cover no-repeat; }
+.film-cover.is-opening { pointer-events: none; background: transparent; }
 .film-cover.is-opening .film-cover__canvas { background: transparent; box-shadow: none; }
 .film-cover.is-opening .film-cover__envelope { border-color: transparent; background: transparent; box-shadow: none; }
 .film-cover__sacred { position: absolute; z-index: 7; top: 5.5%; left: 50%; width: min(58%, 245px); translate: -50% 0; text-align: center; }
@@ -208,10 +208,12 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .film-rsvp__envelope { position: relative; width: min(700px, 100%); height: 700px; margin: 0 auto; filter: drop-shadow(0 14px 21px rgba(76,31,42,.13)); }
 .film-rsvp__back { position: absolute; z-index: 0; left: 2.5%; right: 2.5%; bottom: 0; height: 59%; border-radius: 8px 8px 0 0; background-color: #a96573; background-image: linear-gradient(180deg, rgba(255,255,255,.07), transparent 43%), repeating-linear-gradient(88deg, transparent 0 7px, rgba(71,26,37,.012) 8px); clip-path: polygon(0 26%, 50% 0, 100% 26%, 100% 100%, 0 100%); }
 .film-rsvp__liner { position: absolute; z-index: 1; left: 5.5%; right: 5.5%; bottom: 13%; height: 50%; background: linear-gradient(180deg, #f6e8e0, #ecd6cf); clip-path: polygon(0 25%, 50% 0, 100% 25%, 100% 100%, 0 100%); }
-.film-rsvp__card { position: absolute; z-index: 2; top: 30px; left: 0; right: 0; width: min(570px, calc(100% - 58px)); min-height: 470px; margin: auto; padding: 57px clamp(22px, 6vw, 46px) 125px; overflow: hidden; border: 1px solid rgba(170,111,123,.7); background: #fffaf2; text-align: center; box-shadow: inset 0 0 0 7px #fffaf2, inset 0 0 0 8px rgba(170,111,123,.38), 0 15px 35px rgba(86,45,50,.11); }
+.film-rsvp__card { position: absolute; z-index: 2; top: 24px; left: 0; right: 0; width: min(570px, calc(100% - 58px)); min-height: 500px; margin: auto; padding: 30px clamp(22px, 6vw, 46px) 125px; overflow: hidden; border: 1px solid rgba(170,111,123,.7); background: #fffaf2; text-align: center; box-shadow: inset 0 0 0 7px #fffaf2, inset 0 0 0 8px rgba(170,111,123,.38), 0 15px 35px rgba(86,45,50,.11); }
 .film-rsvp__card::before, .film-rsvp__card::after { content: ""; position: absolute; width: 58px; height: 58px; border: 2px solid var(--film-rose); border-radius: 75% 8% 75% 8%; opacity: .85; }
 .film-rsvp__card::before { top: 17px; left: 18px; border-right-color: transparent; border-bottom-color: transparent; }
 .film-rsvp__card::after { right: 18px; bottom: 17px; rotate: 180deg; border-right-color: transparent; border-bottom-color: transparent; }
+.film-rsvp__monogram { display: block; width: 72px; height: auto; margin: 0 auto 8px; object-fit: contain; }
+.film-rsvp__free-text { max-width: 390px; margin: 20px auto 0; color: var(--film-rose-dark); font-size: 15px; line-height: 1.4; text-align: center; }
 .film-rsvp__card > span { display: block; font-size: 21px; line-height: 1.3; }
 .film-rsvp__card h2 { margin: 14px 0 28px; font: 400 18px/1.25 var(--display); letter-spacing: .08em; }
 .film-rsvp__card p { display: flex; justify-content: space-between; align-items: baseline; gap: 18px; margin: 15px 0; font-size: 16px; line-height: 1.35; }
@@ -278,7 +280,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   .film-location h2 { font-size: clamp(36px, 9.5vw, 42px); white-space: nowrap; }
   .film-rsvp { min-height: 735px; padding-top: 26px; }
   .film-rsvp__envelope { height: 690px; }
-  .film-rsvp__card { top: 22px; width: calc(100% - 68px); min-height: 465px; padding: 54px 21px 120px; }
+  .film-rsvp__card { top: 18px; width: calc(100% - 68px); min-height: 505px; padding: 27px 21px 120px; }
   .film-rsvp__card p { font-size: 14px; }
   .film-music { right: 12px; bottom: 12px; }
 }
