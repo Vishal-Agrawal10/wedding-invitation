@@ -93,6 +93,7 @@ export function AamantranWeddingInvitation() {
   const themeStyle = {
     "--film-rose": config.theme.colors.wineSoft,
     "--film-rose-dark": config.theme.colors.wine,
+    "--film-hero-text": config.theme.colors.heroText,
     "--film-ivory": config.theme.colors.cream,
     "--film-ink": config.theme.colors.ink,
     "--film-gold": config.theme.colors.gold,

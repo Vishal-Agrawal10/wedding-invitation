@@ -31,8 +31,8 @@ export const weddingConfig = {
       heading: "Our Forever Begins",
       // Keep this date in ISO format for the live countdown.
       date: "2026-11-23T10:00:00+05:30",
-      displayDate: "23 November 2026",
-      shortDate: "23.11.26",
+      displayDate: "24 November 2026",
+      shortDate: "24.11.26",
       city: "Bilaspur, Chhattisgarh",
       blessing: "By the grace of the divine and with the blessings of our elders",
       invitationMessage:
@@ -43,10 +43,10 @@ export const weddingConfig = {
     // PAGE 4 — BRIDE AND GROOM FAMILY DETAILS
     page4: {
       heading: "A Promise for a Lifetime",
-      brideGrandparents: "Granddaughter of the Bride's grandparents",
-      brideParents: "Daughter of the Bride's parents",
-      groomGrandparents: "Grandson of the Groom's grandparents",
-      groomParents: "Son of the Groom's parents",
+      brideGrandparents: "Granddaughter of Lt. Smt. Nisha - Lt. Shri Bhagat Narayan Agrawal",
+      brideParents: "Daughter of Smt. Sunita - Lt. Shri Sanjay Agrawal",
+      groomGrandparents: "Grandson of Lt. Smt. Bhukheen bai - Lt. Shah Shri Ramanand Ji Agrawal",
+      groomParents: "Son of Smt. Pinky - Shah Shri Sumukh Ji Agrawal",
     },
 
     // PAGE 5 — WEDDING EVENTS
@@ -58,25 +58,25 @@ export const weddingConfig = {
           name: "Haldi",
           date: "Monday, 23 November",
           time: "10:00 PM onwards",
-          venue: "Hari Amrit",
+          venue: "Hari Amrit, Bilaspur",
         },
         {
-          name: "Sangeet Soirée",
-          date: "Tuesday, 23 November",
+          name: "Sangeet and Engagement",
+          date: "Monday, 23 November",
           time: "7:30 PM onwards",
-          venue: "The Palace Terrace",
+          venue: "Hari Amrit, Bilaspur",
         },
         {
           name: "Wedding Ceremony",
-          date: "Wednesday, 24 November",
-          time: "4:00 PM onwards",
-          venue: "The Lake Pavilion",
+          date: "Tuesday, 24 November",
+          time: "2:00 PM onwards",
+          venue: "Hari Amrit, Bilaspur",
         },
         {
-          name: "Royal Reception",
-          date: "Wednesday, 24 November",
+          name: "Grand Reception",
+          date: "Tuesday, 24 November",
           time: "8:30 PM onwards",
-          venue: "The Grand Durbar Hall",
+          venue: "Hari Amrit, Bilaspur",
         },
       ],
     },
@@ -85,22 +85,23 @@ export const weddingConfig = {
     page6: {
       eyebrow: "Destination",
       heading: "Wedding Location",
-      venueName: "Your Palace Venue",
-      address: "Udaipur, Rajasthan, India",
+      venueName: "Hari Amrit, Bilaspur",
+      address: "",
       mapButtonLabel: "Open in Google Maps",
-      mapUrl: "https://www.google.com/maps/search/?api=1&query=City+Palace+Udaipur",
-      mapEmbedUrl: "https://www.google.com/maps?q=City%20Palace%20Udaipur&z=14&output=embed",
+      mapUrl: "https://maps.app.goo.gl/be7B7YSNPWDxYXycA",
+      mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3697.028593621224!2d82.18775137591575!3d22.08672495060173!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a280aed9efe8227%3A0xc0c686a9406869a2!2sHari%20Amrit!5e0!3m2!1sen!2suk!4v1792583597702!5m2!1sen!2suk",
     },
 
     // PAGE 7 — CONTACT CARD AND FINAL MESSAGE
     page7: {
       loveLinePrefix: "With Love",
-      heading: "RSVP / CONTACT",
+      heading: "CONTACT",
       hostName: "The Wedding Family",
       deadline: "",
       contacts: [
-        { name: "Bride's family", phone: "+91 99999 99999" },
-        { name: "Groom's family", phone: "+91 88888 88888" },
+        { name: "Sunita Agrawal", phone: "+91 9977154039" },
+        { name: "Vishal Agrawal", phone: "+91 7741038493" },
+        { name: "Disha Saxena", phone: "+91 7350861076" },
       ],
       footerMessage: "Made with love for our forever",
     },
@@ -111,7 +112,7 @@ export const weddingConfig = {
     omLogo: "branding/om-logo-transparent.png",
     initialsLogo: "branding/initials-logo-transparent.png",
     waxStamp: "branding/wax-seal-cutout.png",
-    handsIllustration: "branding/hands-reference.jpg",
+    handsIllustration: "branding/hands-transparent.png",
     sacredMarkAlt: "Shree Ganeshay Namah",
   },
 
@@ -131,19 +132,20 @@ export const weddingConfig = {
   // TEMPLATE COLOURS
   theme: {
     colors: {
-      wine: "#6f2e3e",
+      wine: "#642637",
       wineSoft: "#a96977",
+      heroText: "#4d1728",
       gold: "#b38a52",
       cream: "#fffaf0",
-      ink: "#241a17",
+      ink: "#1c1412",
     },
   },
 
   // MUSIC — place the MP3 at public/music/wedding-song.mp3.
   music: {
-    src: "",
+    src: "music/wedding-song.mp3",
     label: "Wedding ambience",
-    volume: 0.42,
+    volume: 0.22,
     loop: true,
   },
 } as const;
