@@ -207,7 +207,7 @@ export function AamantranWeddingInvitation() {
       <motion.img
         className="film-hero__photo"
         src={config.photos.hero}
-        alt={`${config.couple.bride} and ${config.couple.groom}`}
+        alt={`${config.pages.page2.brideName} and ${config.pages.page2.groomName}`}
         initial={prefersReducedMotion ? false : { scale: 1.08 }}
         animate={phase !== "sealed" ? { scale: 1 } : { scale: 1.08 }}
         transition={{ duration: 2.1, ease: "easeOut" }}
@@ -233,7 +233,7 @@ export function AamantranWeddingInvitation() {
                   animate={phase === "opening" ? { opacity: 0, y: -70 } : { opacity: 1, y: 0 }}
                   transition={{ duration: 0.55 }}
                 >
-                  <img src={config.branding.omLogo} alt={config.families.sacredMark} />
+                  <img src={config.branding.omLogo} alt={config.branding.sacredMarkAlt} />
                 </motion.div>
 
                 <motion.div className="film-flap film-flap--left" animate={phase === "opening" ? { x: "-104%", opacity: 0 } : { x: 0, opacity: 1 }} transition={{ duration: 0.82, delay: 0.34 }} />
@@ -273,9 +273,9 @@ export function AamantranWeddingInvitation() {
               animate={phase !== "sealed" ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
               transition={{ duration: 0.9, delay: 0.16 }}
             >
-              <img className="film-hero__monogram" src={config.branding.initialsLogo} alt={`${config.couple.bride} and ${config.couple.groom} monogram`} />
+              <img className="film-hero__monogram" src={config.branding.initialsLogo} alt={`${config.pages.page2.brideName} and ${config.pages.page2.groomName} monogram`} />
               <p>{config.pages.page2.welcomeText}</p>
-              <h1><span>{config.couple.bride}</span><i>&amp;</i><span>{config.couple.groom}</span></h1>
+              <h1><span>{config.pages.page2.brideName}</span><i>&amp;</i><span>{config.pages.page2.groomName}</span></h1>
               <b>{config.pages.page2.hashtag}</b>
               <a href="#begins" aria-label="Scroll to the invitation">{config.pages.page2.scrollLabel} <ChevronDown size={15} /></a>
             </motion.div>
@@ -303,11 +303,11 @@ export function AamantranWeddingInvitation() {
             <Reveal className="film-promise__content">
               <p>{config.pages.page4.heading}</p>
               <span>{config.pages.page4.brideGrandparents}</span>
-              <h2>{config.couple.bride}</h2>
+              <h2>{config.pages.page2.brideName}</h2>
               <span>{config.pages.page4.brideParents}</span>
               <i>&amp;</i>
               <span>{config.pages.page4.groomGrandparents}</span>
-              <h2>{config.couple.groom}</h2>
+              <h2>{config.pages.page2.groomName}</h2>
               <span>{config.pages.page4.groomParents}</span>
             </Reveal>
           </OrnateFrame>
@@ -382,9 +382,9 @@ export function AamantranWeddingInvitation() {
         </section>
 
         <footer className="film-footer">
-          <img src={config.branding.omLogo} alt={config.families.sacredMark} />
+          <img src={config.branding.omLogo} alt={config.branding.sacredMarkAlt} />
           <p>{config.pages.page7.footerMessage}</p>
-          <b>{config.couple.bride} &amp; {config.couple.groom}</b>
+          <b>{config.pages.page2.brideName} &amp; {config.pages.page2.groomName}</b>
         </footer>
       </div>
 

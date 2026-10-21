@@ -6,19 +6,19 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3001";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: `${weddingConfig.couple.bride} & ${weddingConfig.couple.groom} — Wedding Invitation`,
-  description: `You are invited to celebrate the wedding of ${weddingConfig.couple.bride} and ${weddingConfig.couple.groom} in ${weddingConfig.wedding.city}.`,
-  icons: { icon: "./royal-wedding-hero.png" },
+  title: `${weddingConfig.pages.page2.brideName} & ${weddingConfig.pages.page2.groomName} — Wedding Invitation`,
+  description: `You are invited to celebrate the wedding of ${weddingConfig.pages.page2.brideName} and ${weddingConfig.pages.page2.groomName} in ${weddingConfig.pages.page3.city}.`,
+  icons: { icon: "./branding/wax-seal-cutout.png" },
   openGraph: {
-    title: `${weddingConfig.couple.bride} & ${weddingConfig.couple.groom} — Wedding Invitation`,
-    description: `${weddingConfig.wedding.displayDate} · ${weddingConfig.wedding.city}`,
+    title: `${weddingConfig.pages.page2.brideName} & ${weddingConfig.pages.page2.groomName} — Wedding Invitation`,
+    description: `${weddingConfig.pages.page3.displayDate} · ${weddingConfig.pages.page3.city}`,
     type: "website",
-    images: [{ url: "og.png", width: 1792, height: 939, alt: "Royal Indian wedding invitation" }],
+    images: [{ url: "og.png", width: 1792, height: 939, alt: "Indian wedding invitation" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${weddingConfig.couple.bride} & ${weddingConfig.couple.groom}`,
-    description: `${weddingConfig.wedding.displayDate} · ${weddingConfig.wedding.city}`,
+    title: `${weddingConfig.pages.page2.brideName} & ${weddingConfig.pages.page2.groomName}`,
+    description: `${weddingConfig.pages.page3.displayDate} · ${weddingConfig.pages.page3.city}`,
     images: ["og.png"],
   },
 };

@@ -1,21 +1,16 @@
 # Indian Wedding Invitation
 
-A cinematic, mobile-friendly React wedding invitation with a sealed-envelope welcome, countdown, music, event itinerary, gallery, Google Maps and WhatsApp RSVP.
+A cinematic, mobile-friendly React wedding invitation with a sealed-envelope welcome, countdown, music, event itinerary, Google Maps and contact card.
 
-Two complete designs are included:
-
-- `aamantran` — the active rose-envelope, editorial invitation.
-- `royal` — the original palace design, retained for later use.
+The project contains one focused rose-envelope design, organised as seven editable pages.
 
 ## Personalise
 
-Edit `app/wedding.config.ts`. Names, date, family copy, events, gallery images, venue, map links, WhatsApp number, music and the active template are kept together in that file.
+Edit `app/wedding.config.ts`. The text is grouped as **Page 1** through **Page 7**, followed by image, colour and music settings.
 
-Put photos in `public/photos/` and music in `public/music/`, then update their paths in the configuration. Change `activeTemplate` to `"royal"` at any time to restore the original design.
+Put photos in `public/photos/` and music in `public/music/`, then update their paths in the configuration.
 
-The same configuration also controls the envelope animation timing, photo/paper
-opening style, event directions, Google Map, RSVP contacts and whether music
-starts when the invitation is opened.
+The same configuration controls the envelope animation timing, paper/photo landing style, Google Map, contact details and whether music starts when the invitation is opened.
 
 ## Preview
 

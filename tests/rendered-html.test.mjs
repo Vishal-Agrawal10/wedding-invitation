@@ -35,14 +35,18 @@ test("keeps personalisation in one configuration file", async () => {
   assert.match(config, /PAGE-BY-PAGE CONTENT/);
   assert.match(config, /PAGE 1 — CLOSED ENVELOPE/);
   assert.match(config, /PAGE 7 — CONTACT CARD/);
-  assert.match(config, /const pageContent/);
-  assert.match(config, /frontEnvelope:/);
+  assert.match(config, /pages:/);
+  assert.match(config, /blessingLine:/);
+  assert.match(config, /familyLine:/);
   assert.match(config, /public\/music\/wedding-song\.mp3/);
-  assert.match(config, /whatsappNumber/);
   assert.match(config, /mapEmbedUrl/);
   assert.match(config, /events:/);
-  assert.match(config, /gallery:/);
+  assert.match(config, /branding:/);
+  assert.match(config, /presentation:/);
+  assert.match(config, /photos:/);
+  assert.match(config, /music:/);
 
-  const royalTemplate = await readFile(new URL("../app/WeddingInvitation.tsx", import.meta.url), "utf8");
-  assert.match(royalTemplate, /className="welcome-screen"/);
+  const entryPoint = await readFile(new URL("../app/page.tsx", import.meta.url), "utf8");
+  assert.match(entryPoint, /AamantranWeddingInvitation/);
+  assert.doesNotMatch(entryPoint, /\.\/WeddingInvitation|activeTemplate|royal/i);
 });
