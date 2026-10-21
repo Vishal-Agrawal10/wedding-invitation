@@ -146,7 +146,7 @@ export const weddingConfig = {
   music: {
     src: "music/wedding-song.mp3",
     label: "Wedding ambience",
-    volume: 0.22,
+    volume: 0.12,
     loop: true,
   },
 } as const;
